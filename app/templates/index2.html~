@@ -1,0 +1,83 @@
+<html>
+    <head>
+	<title>image display</title>
+	<style>
+	ul{
+		list-style-type : none;
+		margin : 0;
+		padding : 0;
+		overflow : hidden;
+		background-color : #333;
+	}
+	li{
+		float : left;
+	}
+	li a{
+	display : block;
+	color : white;
+	text-align : center;
+	padding : 14px 16px;
+	text-decoration : none;
+	}
+	li a :  hover{
+		background-color : #111;
+	}
+	</style>
+
+        <script>
+		var xp = 0;var yp = 0;
+		var myImg = null
+	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>		
+	<script>
+	 $(document).ready(function() {
+		myImg = document.getElementById("myImgId");
+		$('#somebutton').click(function(){
+			console.log(xp)
+			console.log(yp)
+			//cr = GetCoordinates;
+			//console.log(cr);
+			var dataCor = {"cx" : xp ,"cy" : yp};
+			console.log(dataCor);		
+			
+			$.ajax({
+				contenttype : 'application/json',				
+				type: "POST",
+				url: '/get_data',
+				data: dataCor,
+				success: function(data){
+					console.log(data);
+				}
+				});
+	         
+		});
+
+		myImg.onmousedown = GetCoordinates;
+		
+	});
+		</script>		
+		
+		<script type="text/javascript" src="static/js/functions.js"></script>		
+	</head>
+	
+	<body>
+		<div id="navbar">
+		<nav>
+	    	<ul>
+			<li><a href="int.html">HOME</a></li>
+			<li><a class="active" href="#report">REPORT</a></li>
+			<li><a href="{{ url_for('index') }}">CALIBRATION</a></li>
+	    	</ul>
+		</nav>
+		</div>
+		<center>
+		<div>
+		<img id="myImgId" alt="" src="{{ url_for('image_feed') }}" width=480 />	
+		</div>	
+		<p>X:<span id="x"></span></p>
+		<p>Y:<span id="y"></span></p>	
+    		<button id="somebutton">submit</button>
+		<a href="{{ url_for('datadisplay') }}">GENERATE</a>
+		</center>
+    	</body>
+</html>

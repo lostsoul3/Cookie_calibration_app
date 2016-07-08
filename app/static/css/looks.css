@@ -1,0 +1,73 @@
+body {
+  background-color: #E4E5DD;
+}
+
+.buttonl {
+  left: 70%;
+  top: 24%;
+  position: absolute;
+  width: 30%;
+  font-size: 12px;
+}
+
+.startdateTime{
+  left: 14%;
+  top: 26%;
+  position: absolute;
+}
+.startdateInput{
+  left:23%;
+  top: 25%;
+  position: absolute;
+}
+.enddateTime{
+  left: 40%;
+  top: 26%;
+  position: absolute;
+}
+.enddateInput{
+  left: 48%;
+  top: 25%;
+  position: absolute;
+}
+
+.starting {
+  width: 10%;
+  text-align: center;
+}
+.col-md-3 {
+  width: 100%;
+}
+#Tables {
+  left: 9%;
+  top:36%;
+  position: absolute;
+}
+#download{
+  right: 9%;
+  top:30%;
+  position: absolute;
+  background-color:green;
+}
+.row {
+margin-right: 0%;
+margin-left: 0%;
+}
+.form-class {
+  background-color: #D3D3D3;
+}
+
+/* Table Design .................. */
+table, td, th {
+    border: 2px solid black;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th {
+    height: 70px;
+}

@@ -1,0 +1,53 @@
+body {
+  background-color: #E4E5DD;
+}
+.jumbotron {
+  padding: 0;
+  margin: 0;
+  background-color: #E7746B;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+h2 {
+  text-align: center;
+}
+.buttonl {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 20px;
+  width: 50%;
+}
+.col-md-3 {
+width: 25%;
+height: 490px;
+}
+.col-md-9 {
+width: 75%;
+height: 450px;  
+}
+.starting {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+input[type=radio] {
+ margin-left: 25%;  
+}
+.col-md-2 h2 {
+  text-align: center;
+}
+#chart-area {
+  margin-top: 20px;
+}
+.form-class {
+  background-color: #D3D3D3;
+}
+.progress {
+  display: none;
+  position: absolute;
+  width: 72%;
+  bottom: 3%;
+  background-color:#E2C5C5;
+  left: 26%;
+}

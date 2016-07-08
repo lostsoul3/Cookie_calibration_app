@@ -1,0 +1,61 @@
+<html>
+    <head>
+	<title>image display</title>
+	<script type="text/javascript" src="http://fiddle.jshell.net/js/lib/mootools-core-1.4.5-nocompat.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script>
+		window.addEventListener('load', function() {
+		var imageLoader = document.getElementById('imageLoader');
+    		    imageLoader.addEventListener('change', handleImage, false);
+		var c = document.getElementById('myCanvas');
+		var ctx = c.getContext('2d');
+		function handleImage(e){
+    		var reader = new FileReader();
+    		reader.onload = function(event){
+        		var img = new Image();
+        		img.onload = function(){
+            			c.width = img.width;
+            			c.height = img.height;
+            			ctx.drawImage(img,0,0);
+        		}
+        		img.src = event.target.result;
+    		   }
+    		reader.readAsDataURL(e.target.files[0]);     
+		}
+
+		var canvas = document.getElementById('myCanvas');
+
+		canvas.onclick = function(e){
+		var ctx = canvas.getContext('2d');
+		var x = this.offsetLeft;
+		var y = this.offsetTop;
+		var element = this.offsetParent;
+
+		while (element !== null) {
+			x = parseInt (x) + parseInt (element.offsetLeft);
+        		y = parseInt (y) + parseInt (element.offsetTop);
+
+        		element = element.offsetParent;
+     		}
+		var ccolor = ctx.getImageData(x,y,1,1).data;
+		var r = ccolor[0];
+		var g = ccolor[1];
+		var b = ccolor[2];
+		var rgb = "["+r+","+g+","+b+"]";
+		console.log(rgb);
+		$.ajax({
+    			type: "POST",
+    			url: "{{ url_for('server.app.load_ajax') }}",
+    			data: rgb,
+    			success:function(data){
+        			console.log(data);
+        		}
+    		});
+		}
+		});  
+	</script>
+    </head>
+    <body>
+	<img id ="imageLoader" src="{{ url_for('image_feed') }}">
+    </body>
+</html>

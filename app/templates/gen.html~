@@ -1,0 +1,8 @@
+<html>
+<head>
+<title> data display </title>
+</head>
+<body>
+<p> {{ value }} </p>
+</body>
+</html>

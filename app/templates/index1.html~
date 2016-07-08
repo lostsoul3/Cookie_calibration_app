@@ -1,0 +1,76 @@
+<html>
+    <head>
+	<title>image display</title>
+
+        <script>
+		var xp = 0;var yp = 0;
+		var myImg = null
+	</script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>		
+	
+	
+	<script>
+	 $(document).ready(function() {
+		myImg = document.getElementById("myImgId");
+		$('#somebutton').click(function(){
+			console.log(xp)
+			console.log(yp)
+			//cr = GetCoordinates;
+			//console.log(cr);
+			var dataCor = {"cx" : xp ,"cy" : yp};
+			console.log(dataCor);		
+			/*$.ajax({
+				contenttype : 'application/json',				
+				type : "POST",
+				//url : "{{ url_for('get_data') }}",
+				url : '/get_data',
+				data : JSON.stringify(dataCor),
+				success : function(data){
+					console.log(data);
+				}
+				});*/
+			$.ajax({
+				contenttype : 'application/json',				
+				type: "POST",
+				url: '/get_data',
+				data: dataCor,
+				success: function(data){
+					console.log(data);
+				}
+				});
+	         
+		});
+
+		myImg.onmousedown = GetCoordinates;
+	
+		 //var dataCor = {"cx" : xp
+		//		"cy" : yp
+  		//	};
+		//console.log('hello')
+		//dataCor['cx'] = xp;
+		//dataCor['cy'] = yp;
+		//window.alert(yp);
+		//console.log(dataCor)
+		/*$('#somebutton').click(function(){
+		//console.log("In click")
+	
+		
+	
+		});
+	
+		});*/
+	});
+		</script>		
+		
+		<script type="text/javascript" src="static/js/functions.js"></script>		
+	</head>
+	
+	<body>
+		<img id="myImgId" alt="" src="{{ url_for('image_feed') }}"/>
+				
+		<p>X:<span id="x"></span></p>
+		<p>Y:<span id="y"></span></p>	
+    		<button id="somebutton">submit</button>
+    	</body>
+</html>

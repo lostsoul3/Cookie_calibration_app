@@ -1,0 +1,10 @@
+from flask import Flask, render_template, Views
+import cv2
+import argparse
+
+app = Flask(__name__)
+
+@app.route('/')
+def displayimage:
+	render_template('index.html')
+		

@@ -1,0 +1,11 @@
+<html>
+<head>
+<script> 
+var rdata = {{ value }};
+document.getElementById("d").innerHTML=rdata;
+</script>
+</head>
+<body>
+<p><span id = "d"></span></p>
+</body>
+</html>

@@ -1,0 +1,40 @@
+from flask import Flask, render_template, Response, request
+from camera import ImageCapture
+import cv2
+
+class server():
+
+	def __init__(self,__name__):
+		self.success = []
+		self.frame = []
+		self.app = Flask(__name__)
+		self.camera = ImageCapture()
+		self.px=0
+		self.py=0
+		self.imageBytes = None
+	
+	@server.app.route('/')
+	def index(self):
+		return render_template('index.html')
+
+	def gen(self):
+		self.success , self.frame = self.camera.get_frame()
+		ret , jpeg = cv2.imencode('.jpg',self.frame)
+		return jpeg.tobytes()
+
+	@server.app.route('/image_feed')
+	def image_feed(self):
+		self.imagebytes = gen(self)
+		return Response(self.imagebytes)
+	
+	@server.app.route('/get_data', methods=['POST'])
+	def get_data(self):
+		print "something"
+		self.px = request.values.get('cx')
+		self.py = request.values.get('cy')
+	`	self.success self.frame[self.px,self.py]
+		return 	self.success	
+
+
+
+
